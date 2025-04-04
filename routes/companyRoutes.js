@@ -7,5 +7,6 @@ router.get('/companies/:id', companyController.getCompanyById);
 router.get('/companies/isin/:isin', companyController.getCompanyByIsin);
 router.get('/companies', companyController.getAllCompanies);
 router.put('/companies/:id', companyController.updateCompany);
+router.delete('/companies/:id', companyController.deleteCompany);
 
 module.exports = router;
