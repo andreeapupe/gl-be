@@ -38,7 +38,7 @@ exports.getCompanyByIsin = async (req, res) => {
 
 exports.getAllCompanies = async (req, res) => {
   try {
-    const companies = await Company.findAll();
+    const companies = await Company.findAll({order: [['id', 'ASC']],});
     res.status(200).json(companies);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -58,3 +58,20 @@ exports.updateCompany = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
+exports.deleteCompany = async (req, res) => {
+  try {
+    const companyId = req.params.id;
+    const deletedCount = await Company.destroy({ where: { id: companyId } });
+
+    if (deletedCount > 0) {
+      return res.status(204).send();
+    } else {
+      return res.status(404).json({ error: 'Company has not been found' });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
