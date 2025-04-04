@@ -4,7 +4,7 @@ Company API
 Project Overview
 ----------------
 
-This project is a RESTful API for managing company records, built using Node.js, Express, and PostgreSQL. The API allows users to create, retrieve, update, and validate company records based on specified requirements.
+This project is a RESTful API for managing company records, built using Node.js, Express, and PostgreSQL. The API allows users to create, retrieve, update, delete and validate company records based on specified requirements.
 
 Table of Contents
 -----------------
@@ -104,49 +104,23 @@ Replace your\_username and your\_password with your PostgreSQL credentials.
 
 ### Database Setup
 
-1.  Open the PostgreSQL command line or any PostgreSQL client (like pgAdmin).
+1.  Open the PostgreSQL command line
     
-    In the local terminal, in order to create the database, you must run
+    Navigate to the folder containing the **init.sql** file and open a terminal in that directory. It should be found in the root project.
 
     ```
-    sudo -u postgres psql
-    
-    > CREATE DATABASE company_db;
-    > CREATE USER myuser WITH PASSWORD 'mypassword';
-    > GRANT ALL PRIVILEGES ON DATABASE company_db TO myuser;
-    > \q
+    psql -U postgres -f init.sql  
     
     ```
     
-     To create the table
+    In order to check if the data has been added
     
     ```
-    \c company_db
+    psql -U postgres -d company_db;
     
-    CREATE TABLE companies (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    exchange VARCHAR(255) NOT NULL,
-    stock_ticker VARCHAR(20) NOT NULL,
-    isin VARCHAR(20) NOT NULL UNIQUE,
-    website VARCHAR(255));
-    ```
-    
-    (Optional) If you want to add some records to the database to test if it's been initialised properly
-    
-    ```
-    INSERT INTO companies (name, exchange, stock_ticker, isin, website) 
-    VALUES 
-    ('Apple Inc.', 'NASDAQ', 'AAPL', 'US0378331005', 'http://www.apple.com'),
-    ('British Airways Plc', 'Pink Sheets', 'BAIRY', 'US1104193065', NULL);
-    ```
-    
-    To make sure if they've been added 
-    
-    ``` 
     SELECT * FROM companies;
-    
     ```
+    
     
     
     
