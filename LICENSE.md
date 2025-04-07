@@ -23,4 +23,8 @@ You are not allowed to:
 
 ## Disclaimer
 
-This code is provided "as is", without any
+This code is provided "as is", without any warranty of any kind. The author shall not be liable for any damages arising from the use of this code, including but not limited to direct, indirect, incidental, or consequential damages.
+
+## Acceptance of Terms
+
+By using this code, you acknowledge that you have read and understood this license and agree to abide by its terms. If you do not agree with these terms, you must not use the code.
